@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>和美商事 | WABI Trading - 日本の美を世界へ</title>
+    <meta name="description" content="日本の伝統工芸品を世界に届ける専門商社。陶器、漆器、着物、茶道具など、職人が丹精込めて作った本物の日本文化をお届けします。">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho Pro', 'Yu Mincho', 'YuMincho', 'Noto Serif JP', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fefefe;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2c1810 0%, #4a2c17 100%);
+            color: #f4f1ec;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        .logo span {
+            font-size: 1rem;
+            color: #f4f1ec;
+            margin-left: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #f4f1ec;
+            text-decoration: none;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: #d4af37;
+            border-bottom-color: #d4af37;
+        }
+
+        .lang-toggle {
+            background: #d4af37;
+            color: #2c1810;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .lang-toggle:hover {
+            background: #b8941f;
+            transform: translateY(-2px);
+        }
+
+        /* Main content */
+        main {
+            margin-top: 80px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 24, 16, 0.6), rgba(44, 24, 16, 0.6)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f4f1ec" width="1200" height="600"/><path fill="%23d4af37" opacity="0.1" d="M0 300c200-100 400-50 600 0s400 100 600 0v300H0z"/><circle fill="%23c41e3a" opacity="0.8" cx="200" cy="150" r="80"/><rect fill="%232c1810" opacity="0.1" x="800" y="200" width="300" height="200" rx="10"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #d4af37;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .cta-button {
+            background: #d4af37;
+            color: #2c1810;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: #b8941f;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Section styles */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c1810;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: #d4af37;
+            margin: 1rem auto;
+        }
+
+        /* Products Section */
+        .products {
+            background: #f8f6f0;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .product-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-card h3 {
+            color: #2c1810;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .product-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .about-text h3 {
+            color: #2c1810;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .about-image {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8f6f0 0%, #ede9e0 100%);
+            border-radius: 10px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #2c1810;
+            color: #f4f1ec;
+        }
+
+        .contact .section-title {
+            color: #d4af37;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #d4af37;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #4a2c17;
+            border-radius: 5px;
+            background: #f4f1ec;
+            color: #333;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #d4af37;
+        }
+
+        .submit-btn {
+            background: #d4af37;
+            color: #2c1810;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #b8941f;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a0f08;
+            color: #f4f1ec;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: #d4af37;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: #f4f1ec;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #d4af37;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: #d4af37;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#home" class="logo">
+                和美商事
+                <span>WABI Trading</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">ホーム</a></li>
+                <li><a href="#products">商品</a></li>
+                <li><a href="#about">会社概要</a></li>
+                <li><a href="#contact">お問い合わせ</a></li>
+            </ul>
+            <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>日本の美を世界へ</h1>
+                <p class="subtitle">Bringing Japanese Beauty to the World</p>
+                <a href="#products" class="cta-button">商品を見る</a>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="section products">
+            <div class="container">
+                <h2 class="section-title">取扱商品</h2>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-icon">🏺</div>
+                        <h3>陶器・磁器</h3>
+                        <p>有田焼、伊万里焼、備前焼など、日本各地の名窯で作られた美しい陶磁器。職人の技と伝統が生み出す芸術品です。</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-icon">🥢</div>
+                        <h3>漆器</h3>
+                        <p>輪島塗、会津塗など、日本の漆芸技術の粋を集めた漆器。美しい光沢と耐久性を兼ね備えた実用的な美術品です。</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-icon">👘</div>
+                        <h3>着物・織物</h3>
+                        <p>京友禅、西陣織など、日本の染織技術の最高峰。繊細な技法で織り成される美しい着物や帯をお届けします。</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-icon">🍵</div>
+                        <h3>茶道具</h3>
+                        <p>茶碗、茶釜、茶杓など、茶道に使用される道具一式。日本の「わび・さび」の精神を体現した品々です。</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-icon">🖌️</div>
+                        <h3>書道用品</h3>
+                        <p>筆、硯、墨、和紙など、書道に必要な用品。職人が丹精込めて作った本格的な書道用具をご提供します。</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-icon">⚔️</div>
+                        <h3>刀剣・武具</h3>
+                        <p>日本刀、鎧兜など、日本の武士文化を象徴する美術品。歴史と技術が融合した芸術作品をお取り扱いします。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">会社理念</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>日本の伝統文化を世界に</h3>
+                        <p>私たち和美商事は、日本の美しい伝統工芸品を世界中の人々にお届けする専門商社です。長い歴史の中で培われた職人の技術と精神を大切にし、本物の日本文化を海外に紹介することを使命としています。</p>
+                        
+                        <h3>職人との直接的な関係</h3>
+                        <p>私たちは日本各地の工房や職人と直接取引を行い、中間マージンを削減することで、お客様により良い価格で高品質な商品をご提供しています。また、職人の技術継承にも貢献し、伝統文化の保護と発展に努めています。</p>
+                        
+                        <h3>品質へのこだわり</h3>
+                        <p>すべての商品は厳選された職人によって丁寧に作られ、私たちの品質基準をクリアしたもののみをお客様にお届けしています。本物の日本の美を世界に広めることが私たちの誇りです。</p>
+                    </div>
+                    <div class="about-image">
+                        <div style="font-size: 8rem; color: #d4af37;">🏯</div>
+                        <p style="margin-top: 1rem; color: #666;">日本の伝統と美を世界へ</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact">
+            <div class="container">
+                <h2 class="section-title">お問い合わせ</h2>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">お名前 / Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">メールアドレス / Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">会社名 / Company (Optional)</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    <div class="form-group">
+                        <label for="country">国・地域 / Country</label>
+                        <input type="text" id="country" name="country" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">お問い合わせ内容 / Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">送信 / Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>和美商事 WABI Trading</h4>
+                    <p>〒100-0001<br>
+                    東京都千代田区千代田1-1-1<br>
+                    TEL: +81-3-1234-5678<br>
+                    Email: info@wabi-trading.com</p>
+                </div>
+                <div class="footer-section">
+                    <h4>取扱商品</h4>
+                    <p>陶器・磁器<br>
+                    漆器<br>
+                    着物・織物<br>
+                    茶道具<br>
+                    書道用品<br>
+                    刀剣・武具</p>
+                </div>
+                <div class="footer-section">
+                    <h4>フォローする</h4>
+                    <div class="social-links">
+                        <a href="#">📘</a>
+                        <a href="#">📷</a>
+                        <a href="#">🐦</a>
+                        <a href="#">💼</a>
+                    </div>
+                </div>
+            </div>
+            <p>&copy; 2024 和美商事 WABI Trading. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentLanguage = 'ja';
+
+        function toggleLanguage() {
+            const button = document.querySelector('.lang-toggle');
+            if (currentLanguage === 'ja') {
+                currentLanguage = 'en';
+                button.textContent = 'JP';
+                // Here you would implement the language switching logic
+                // For now, just changing the button text
+            } else {
+                currentLanguage = 'ja';
+                button.textContent = 'EN';
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('お問い合わせありがとうございます。24時間以内にご返信いたします。\nThank you for your inquiry. We will respond within 24 hours.');
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'linear-gradient(135deg, rgba(44, 24, 16, 0.95) 0%, rgba(74, 44, 23, 0.95) 100%)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #2c1810 0%, #4a2c17 100%)';
+            }
+        });
+    </script>
+</body>
+</html>
